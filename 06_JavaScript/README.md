@@ -1,6 +1,7 @@
 # Projektname: Datenpräsentation mit interaktiver Tabelle
 
 ## Beschreibung
+JavaScript ist eine Programmiersprache, die hauptsächlich dazu verwendet wird, Webseiten interaktiv zu machen und dynamische Inhalte direkt im Browser auszuführen.
 In diesem Projekt soll eine Webanwendung erstellt werden, um Daten in einer Tabelle darzustellen. Die Tabelle soll über eine JavaScript-Suche verfügen, die es dem Benutzer ermöglicht, nach bestimmten Datensätzen zu suchen. Darüber hinaus soll es möglich sein, beim Klicken auf einen Datensatz ein Popup zu öffnen, das weitere Details zu diesem Datensatz anzeigt.
 
 ## Inhaltsverzeichnis
