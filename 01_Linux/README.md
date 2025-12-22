@@ -1,7 +1,7 @@
 # Einrichten einer Virtual Machine (VM) unter Rocky Linux
 
 ## Beschreibung
-In diesem Projekt wird eine Virtual Machine (VM) unter Rocky Linux eingerichtet. Es werden verschiedene Benutzer angelegt, die Partitionierung vorgenommen und verschiedene Programme installiert.
+In diesem Projekt wird eine Virtual Machine (VM) unter dem Betriebsystem Rocky Linux eingerichtet. Es werden verschiedene Benutzer angelegt, die Partitionierung vorgenommen und verschiedene Programme installiert.
 
 
 ### Benutzer anlegen

@@ -1,6 +1,7 @@
 # Projektname: Erstellung einer API zur Datenabfrage
 
 ## Beschreibung
+Eine API (Application Programming Interface) ist eine Schnittstelle, die es Programmen ermöglicht, miteinander zu kommunizieren. Sie legt fest, wie Informationen angefragt und geliefert werden, ohne dass die Programme wissen müssen, wie der andere intern funktioniert. Ein Beispiel ist eine Wetter-App: Sie fragt über die API beim Wetterdienst nach den Daten, und der Dienst liefert sie zurück. So können Programme einfach zusammenarbeiten.
 In diesem Projekt wird eine API erstellt, über die Daten abgefragt werden können. Es sollen zwei Endpunkte implementiert werden: Einer, der alle Datensätze zurückgibt, und ein anderer, der einen bestimmten Datensatz anhand einer speziellen ID liefert.
 
 ## Inhaltsverzeichnis
@@ -17,7 +18,6 @@ In diesem Projekt wird eine API erstellt, über die Daten abgefragt werden könn
 - Stelle sicher, dass die Daten korrekt formatiert und über die API zurückgegeben werden.
 
 ## Fragen und Antworten
-- Was ist eine API? Erläutere den Begriff und ihre Bedeutung in der Softwareentwicklung.
 - Woraus besteht eine API? Beschreibe die Komponenten und Funktionen einer API.
 - Wann wird eine API verwendet? Erkläre die Einsatzgebiete und Situationen, in denen APIs eingesetzt werden.
 - Warum sind APIs wichtig? Diskutiere die Bedeutung von APIs für die Interoperabilität und Integration von Systemen.

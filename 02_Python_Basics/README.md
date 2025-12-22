@@ -1,7 +1,8 @@
 ## Aufgabenbeschreibung
 
 ### 1. Erstellen eines UML-Klassendiagramms basierend auf den gegebenen Daten:
-- **Analysiere die Struktur des JSON-Dokuments** und identifiziere die relevanten Klassen und ihre Attribute sowie Beziehungen zueinander.
+- **Fehlerbehebung** die JSON Datei ist nicht ganz korrekt, repariere sie.
+- **Analysiere die Struktur des JSON-Dokuments** identifiziere die relevanten Klassen und ihre Attribute sowie Beziehungen zueinander.
 - **Zeichne ein UML-Klassendiagramm**, das die Klassen, ihre Attribute und Methoden sowie die Beziehungen zwischen den Klassen (z.B. Assoziationen, Vererbungen) darstellt.
 
 ### 2. Implementierung der Klasse in Python:
