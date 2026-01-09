@@ -10,10 +10,12 @@ In diesem Projekt wird eine Virtual Machine (VM) unter dem Betriebsystem Rocky L
 - `entwickler`: Ein Benutzer für das tägliche arbeiten. Du kannst ihn benennen wie du möchtest 
 
 
+Linux - Installition 
+
 ### Installierte Programme
-a) nvim  
-b) Git  
-c) check-mk 
+a) nvim  Done
+b) Git  Done
+c) check-mk Done
 b) Erstelle ein Basis Monitoring für ein Server, Switches, Firewall 
 
 ## Fragen und Antworten
@@ -61,34 +63,85 @@ LSP - Kommunikation
 
 - Wie kann man Programme im Hintergrund laufen lassen und Prozesse verwalten?
 Mit den Softwaretools wie Task-Manager auf Windows.
-
+`top`
 
 - Wie kann man Skripte unter Linux erstellen und ausführen?
+Datei erstellen --> 'touch'
+
 
 
 - Was ist ein Linux-Kernel und wie kann man ihn aktualisieren?
+Linux-Kernel ist Hauptkomponent von einem Betriebssystem Linux, Software-Schicht, die als Vermitteler zwischen der Hardware dient 
+Aktualisieren --> Paketmanager (DNF)
+
+
 - Was sind symbolische Links und wie unterscheiden sie sich von Hardlinks?
+
+
+
 - Welche Vorteile bietet die Nutzung von LTS (Long Term Support) Versionen einer Linux-Distribution?
+Support, Bugfixing, Aktualisirung 
+
 - Wie schreibt man Kommentare in Bash?
+# <---
+
 - Was ist vim?
+Vim - Texteditor für Linux oder Unix. Braucht nut Tastatur 
+
 
 ### Linux-Befehle
 Was bewirken folgende Befehle:
 - `history`
+Zeigt die letzten eingegebenen Kommandos als Liste
+
 - `chmod`
+chmod changes the access permissions of the named files
+
 - `chown`
+chown changes the user and/or group ownership of each given file to new-owner or to the user and group of an existing reference file
+
 - `mv test.txt abc`
+verschiebt/benennt Dateien 
+
 - `ll | grep test`
+
+ll - zeigt aktuelle Dateien als liste 
+ls -l
+
+
+
 - `find . -name cisco`
+sucht Datei in gleicher Ordner 
+
 - `find / -name cisco`
+sucht Datei in allen Plätzen 
+
 - `tar -xvf archive.tar.gz`
+
+
 - `df -h`
+
+
 - `du -sh directory`
+
+
 - `ps aux`
+ps - report a snapshot of the current processes.
+ps aux - zeigt jede Prozesse im System
+
+
 - `grep pattern file`
+
+
 - `top`
+zeigt alle aktive Prozesse
+
+
+
 - `netstat -tuln`
+
 - `ifconfig`
+
 - `ping host`
 
 
