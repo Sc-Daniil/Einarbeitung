@@ -111,13 +111,13 @@ ll | grep test zeigt nur die Dateien mit dem Name "test"
 
 
 - `find . -name cisco`
-sucht Datei in gleicher Ordner + Sub ductorys 
+sucht die Datei im aktuellen Verzeichnis und in allen Unterverzeichnissen
 
 - `find / -name cisco`
-sucht Datei in allen Plätzen 
+sucht die Datei ab Root in allen Unterverzeichnissen 
 
 - `tar -xvf archive.tar.gz`
-
+macht Tare Archiver 
 
 - `df -h`
 df - zeigt die Belegung aller Dateisysteme
