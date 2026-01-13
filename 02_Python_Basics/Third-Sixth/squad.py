@@ -4,20 +4,32 @@ class Squad():
     """"""
     squad_name: str
     home_town: str
-    status: str
     formed_year: int
+    status: str
     secret_base: str 
     is_active: bool 
     members: list[Member]
     
-    def __init__(self, squad_name, home_town, status, formed_year, secret_base, is_active, members) -> None:
+    def __init__(self, squad_name, home_town, formed_year, status, secret_base, is_active, members) -> None:
         self.squad_name = squad_name
         self.home_town = home_town
-        self.status = status
         self.formed_year = formed_year
+        self.status = status
         self.secret_base = secret_base
         self.is_active = is_active
         self.members = members
+
+
+    def squad_to_dict(self) -> dict:
+        return {
+            "squadName" : self.squad_name,
+            "homeTown" : self.home_town,
+            "formed" : self.formed_year,
+            "status" : self.status,
+            "secretBase" : self.secret_base,
+            "active" : self.is_active,
+            "members" : self.members
+        }
 
 
     @classmethod
@@ -27,8 +39,8 @@ class Squad():
         return cls(
             squad_name = data["squadName"],
             home_town = data["homeTown"],
-            status = data["status"],
             formed_year = data["formed"],
+            status = data["status"],
             secret_base = data["secretBase"],
             is_active = data["active"],
             members = members_list 
@@ -38,8 +50,8 @@ class Squad():
         return f"""
         Name: {self.squad_name}
         Home Town: {self.home_town}
-        Status: {self.status}
         Formed Year: {self.formed_year}
+        Status: {self.status}
         Active: {self.is_active}        
         Members: {self.members} 
         """

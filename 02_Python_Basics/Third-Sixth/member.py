@@ -11,6 +11,14 @@ class Member():
         self.secret_identity = secret_identity
         self.powers = powers
 
+    def member_to_dict(self) -> dict:
+        return {
+            "name" : self.name,
+            "age" : self.age,
+            "secretIdentity" : self.secret_identity,
+            "powers" : self.powers
+        }
+
     @classmethod
     def member_from_dict(cls, data: dict):
         return cls(
