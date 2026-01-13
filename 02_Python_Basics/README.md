@@ -17,7 +17,6 @@
 - **Schreibe ein Python-Skript**, das die JSON-Daten einliest.
 - **Erstelle Instanzen der zuvor definierten Klasse(n)** und initialisiere sie mit den Daten aus dem JSON-Dokument.
 
-[text](Third-Sixth/main.py)
 
 ### 4. Methode zum Hinzufügen eines Members:
 - **Implementiere eine Methode in der entsprechenden Klasse**, die ein neues Mitglied zum Team hinzufügt.
