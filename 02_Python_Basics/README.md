@@ -5,13 +5,19 @@
 - **Analysiere die Struktur des JSON-Dokuments** identifiziere die relevanten Klassen und ihre Attribute sowie Beziehungen zueinander.
 - **Zeichne ein UML-Klassendiagramm**, das die Klassen, ihre Attribute und Methoden sowie die Beziehungen zwischen den Klassen (z.B. Assoziationen, Vererbungen) darstellt.
 
+![Diagramm](UML-Klassendiagramm.png)
+
+
 ### 2. Implementierung der Klasse in Python:
 - **Erstelle eine Python-Klasse oder Klassen**, die die Struktur des UML-Klassendiagramms widerspiegeln.
 - **Definiere die Attribute und Methoden** entsprechend den Daten und Anforderungen aus dem JSON-Dokument.
+[Second](Second)
 
 ### 3. Einlesen der JSON-Daten als Objekte der erstellten Klasse(n):
 - **Schreibe ein Python-Skript**, das die JSON-Daten einliest.
 - **Erstelle Instanzen der zuvor definierten Klasse(n)** und initialisiere sie mit den Daten aus dem JSON-Dokument.
+
+[text](Third-Sixth/main.py)
 
 ### 4. Methode zum Hinzufügen eines Members:
 - **Implementiere eine Methode in der entsprechenden Klasse**, die ein neues Mitglied zum Team hinzufügt.
