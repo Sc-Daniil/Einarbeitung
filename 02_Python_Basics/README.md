@@ -12,19 +12,22 @@
 - **Erstelle eine Python-Klasse oder Klassen**, die die Struktur des UML-Klassendiagramms widerspiegeln.
 - **Definiere die Attribute und Methoden** entsprechend den Daten und Anforderungen aus dem JSON-Dokument.
 [Second](Second)
+Done
 
 ### 3. Einlesen der JSON-Daten als Objekte der erstellten Klasse(n):
 - **Schreibe ein Python-Skript**, das die JSON-Daten einliest.
 - **Erstelle Instanzen der zuvor definierten Klasse(n)** und initialisiere sie mit den Daten aus dem JSON-Dokument.
-
+Done
 
 ### 4. Methode zum Hinzufügen eines Members:
 - **Implementiere eine Methode in der entsprechenden Klasse**, die ein neues Mitglied zum Team hinzufügt.
 - Die Methode sollte die benötigten Informationen (z.B. Name, ID) als Parameter entgegennehmen und ein neues Mitgliedsobjekt erstellen und zur entsprechenden Liste hinzufügen.
+Done
 
 ### 5. Methode zur Ausgabe des Teams mit den jeweiligen Mitgliedern:
 - **Implementiere eine Methode in der entsprechenden Klasse**, die das gesamte Team und deren Mitglieder auf eine lesbare Weise ausgibt.
 - Die Methode sollte durch die Mitglieder des Teams iterieren und deren Details anzeigen.
+Done
 
 ### 6. Methode zum Löschen eines Members anhand der ID:
 - **Implementiere eine Methode in der entsprechenden Klasse**, die ein Mitglied anhand seiner ID löscht.
