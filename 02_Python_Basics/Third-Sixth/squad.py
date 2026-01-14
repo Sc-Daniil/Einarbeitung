@@ -17,7 +17,7 @@ class Squad():
         self.status = status
         self.secret_base = secret_base
         self.is_active = is_active
-        self.members = members
+        self.members = members if members else []
 
 
     def squad_to_dict(self) -> dict:
@@ -28,9 +28,11 @@ class Squad():
             "status" : self.status,
             "secretBase" : self.secret_base,
             "active" : self.is_active,
-            "members" : self.members
+            "members": [m.member_to_dict() for m in self.members] 
         }
 
+    def member_to_squad(self, new_members):
+        self.members.extend(new_members)
 
     @classmethod
     def squad_from_dict(cls, data: dict):
