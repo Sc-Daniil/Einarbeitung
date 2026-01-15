@@ -478,53 +478,5 @@
                 ]
             }
         ]
-    },
-    {
-        "squadName": "Name",
-        "homeTown": "TOwn",
-        "formed": 2000,
-        "status": "Evil",
-        "secretBase": "Nope",
-        "active": true,
-        "members": [
-            {
-                "name": "Galina",
-                "age": 2000,
-                "secretIdentity": "3456789",
-                "powers": [
-                    "Like an apple",
-                    " Normal",
-                    " Likes python"
-                ]
-            },
-            {
-                "name": "George",
-                "age": 77,
-                "secretIdentity": "4738472938",
-                "powers": [
-                    "Brain",
-                    "Eyes",
-                    "Speak"
-                ]
-            },
-            {
-                "name": "Hello",
-                "age": 123,
-                "secretIdentity": "21312321",
-                "powers": [
-                    "Good",
-                    "Bad"
-                ]
-            },
-            {
-                "name": "Gg",
-                "age": 213,
-                "secretIdentity": "dasdas",
-                "powers": [
-                    "Bad",
-                    "Bad"
-                ]
-            }
-        ]
     }
 ]
