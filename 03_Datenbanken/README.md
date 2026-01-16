@@ -24,6 +24,7 @@ Die Daten sollen in einer Datenbank gespeichert werden.
 - Was ist Kaskadierung?
 - Wann werden Gruppierungen benötigt?
 - Was ist ein DBMS?
+Datenbaknmanagementsystem
 - Was versteht man unter Datenintegrität?
 - Was ist Normalisierung?
 - Was sind Aggregationsfunktionen und welche gibt es? (3 Beispiele)
