@@ -6,7 +6,7 @@ class Member:
     age: int
     secret_identity: str
     powers: list[str]
-
+    
 @dataclass
 class Squad:
     squad_name: str
@@ -16,13 +16,3 @@ class Squad:
     secret_base: str
     active: bool
     members: list[Member]
-
-
-# def read_from_db():
-#     pass
-
-# def push_to_db():
-#     sql =f"""
-#     INSERT into sqauads(col1,col2) values ({self.name},{self.formed})
-
-# """
