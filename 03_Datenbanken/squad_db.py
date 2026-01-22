@@ -33,3 +33,13 @@ class SquadDB:
         )
         self.db.commit()
         return True
+    def get_squad_id_by_name(self, squad_name: str):
+        self.db.execute(
+            "SELECT squad_id FROM squads WHERE squad_name = ?",
+            (squad_name,)
+        )
+
+        row = self.db.fetchone()
+        if row: 
+            return row[0] 
+        return None

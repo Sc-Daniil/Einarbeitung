@@ -1,5 +1,5 @@
 import json
-from models import Squad, Member
+from models import Squad, Member, Power
 
 class Parser:
     @staticmethod
@@ -14,7 +14,8 @@ class Parser:
                     member_name=m["name"],
                     age=m["age"],
                     secret_identity=m["secretIdentity"],
-                    powers=m["powers"]
+                    powers=m["powers"],
+                    squad_name=s["squadName"]
                 )
                 members.append(member)
 
@@ -41,10 +42,24 @@ class Parser:
                     member_name=m["name"],
                     age=m["age"],
                     secret_identity=m["secretIdentity"],
-                    powers=m["powers"]
+                    powers=m["powers"],
+                    squad_name=s["squadName"]
                 )
                 list_members.append(member)
         return list_members 
+    
+    @staticmethod
+    def parse_powers(data: list) -> list:
+        list_powers = []
+        for s in data:
+            for m in s["members"]:
+                for p in m["powers"]:
+                    power = Power(
+                        power_name=p,
+                        member_name=m["name"]
+                    )
+                    list_powers.append(power)
+        return list_powers
 
     @staticmethod
     def get_data_from_file(path: str) -> dict: 

@@ -1,12 +1,18 @@
 from dataclasses import dataclass
 
 @dataclass
+class Power:
+    power_name: str
+    member_name: str
+
+@dataclass
 class Member:
     member_name: str
     age: int
     secret_identity: str
     powers: list[str]
-    
+    squad_name: str
+
 @dataclass
 class Squad:
     squad_name: str

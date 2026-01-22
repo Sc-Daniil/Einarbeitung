@@ -2,8 +2,11 @@ from database import Database
 from squad_db import SquadDB
 from member_db import MemberDB
 from power_db import PowerDB
+from parser import Parser
 from ui import UI
 
+
+PATH: str = "../base.json"
 
 def main():
     db = Database("base.db")
@@ -11,6 +14,24 @@ def main():
     member_db = MemberDB(db)
     power_db = PowerDB(db)
     ui = UI()
+
+    db.make_tables()
+
+    data = Parser.get_data_from_file(PATH)
+    squads = Parser.parse_squads(data)
+    members = Parser.parse_members(data)
+    powers = Parser.parse_powers(data)
+
+    for squad in squads:
+        squad_db.add_squad(squad)
+    
+    for member in members:
+        squad_id = squad_db.get_squad_id_by_name(member.squad_name)
+        member_db.add_member(member, squad_id)
+
+    for power in powers:
+        member_id = member_db.get_member_id_by_name(power.member_name) 
+        power_db.add_power(power, member_id)
 
     while True:
         choice = ui.main_menu()

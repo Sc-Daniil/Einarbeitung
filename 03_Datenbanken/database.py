@@ -22,7 +22,7 @@ class Database:
                 age INTEGER,
                 squad_id INTEGER,
                 secret_identity TEXT,
-                FOREIGN KEY(quad_id) REFERENCES squads(squad_id)   
+                FOREIGN KEY(squad_id) REFERENCES squads(squad_id)   
                 
             )
         """)
@@ -40,12 +40,17 @@ class Database:
         """)
 
         self.connection.commit() 
+    def execute(self, sql: str, params: tuple = ()):
+        self.cur.execute(sql, params)
 
     def fetchone(self):
         return self.cur.fetchone()
 
     def fetchall(self):
         return self.cur.fetchall()
+
+    def lastrowid(self) -> int:
+        return self.cur.lastrowid
 
     def commit(self):
         self.connection.commit()

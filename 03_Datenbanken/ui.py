@@ -51,7 +51,7 @@ class UI:
         EXIT        ---> 5 or x
         """)
         return input("> ")
-
+    
     def create_squad(self) -> Squad:
         print("--- NEW SQUAD ---")
         print("Write Squad Name.")
