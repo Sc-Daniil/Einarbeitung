@@ -62,11 +62,12 @@ def main():
                 squad_db.add_squad(squad)
 
             elif sub == "2":
-                pass 
+                member = ui.create_member() 
+                member_db.add_member(member)
 
             elif sub == "3":
-                pass  
-
+                member = ui.create_power()
+                power_db.add_power(member)
             elif sub == "4" or sub.lower() == "b":
                 continue
 

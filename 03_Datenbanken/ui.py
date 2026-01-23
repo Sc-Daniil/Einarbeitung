@@ -1,4 +1,4 @@
-from models import Squad
+from models import Squad, Member, Power
 
 
 class UI:
@@ -55,19 +55,19 @@ class UI:
     def create_squad(self) -> Squad:
         print("--- NEW SQUAD ---")
         print("Write Squad Name.")
-        squad_name = input("name> ").strip()
+        squad_name = input("> ").strip()
 
         print("Write Squad Home Town.")
-        home_town = input("> ")
+        home_town = input("> ").strip()
 
         print("Write Squad Formed Year.")
         formed = self.input_int()
 
         print("Write Squad Status.")
-        status = input("> ")
+        status = input("> ").strip()
 
         print("Write Squad Secret Base.")
-        secret_base = input("> ")
+        secret_base = input("> ").strip()
 
         print("Write Squad Active Status 'True/False'")
         active = self.input_bool()
@@ -80,4 +80,31 @@ class UI:
             secret_base=secret_base,
             active=active,
             members=[]
+        )
+
+    def create_member(self) -> Member:
+        print("--- NEW MEMBER ---")
+        print("Member Name")
+        member_name = input("> ").strip()
+
+        print("Write Member Age")
+        age = self.input_int()
+
+        print("Write Secret Identity.")
+        secret_identity = input("> ").strip()
+
+        return Member (
+            member_name=member_name,
+            age=age,
+            secret_identity=secret_identity,
+            powers=[]
+        )
+    
+    def create_power(self) -> Power:
+        print("--- NEW POWER ---")
+        print("Write power")
+        power_name = input(">").strip()
+
+        return Power(
+            power_name=power_name
         )
