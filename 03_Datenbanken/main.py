@@ -58,16 +58,38 @@ def main():
             sub = ui.add_menu()
 
             if sub == "1":
-                squad = ui.create_squad()
-                squad_db.add_squad(squad)
+                squad_name = ui.get_squad_name()
+                if not squad_db.squad_exists(squad_name):
+                    squad = ui.create_squad(squad_name)
+                    squad_db.add_squad(squad)
+                    print(f"New Squad {squad_name} was added.")
+                else:
+                    print("Squad already exists.")
 
             elif sub == "2":
-                member = ui.create_member() 
-                member_db.add_member(member)
+                input_member_name = ui.get_member_name()
+                if not member_db.member_exists(input_member_name):
+                    print("To which squad do you want to add a member?")
+                    input_squad_name = ui.get_squad_name()
+                    squad_name_to_squad_id = squad_db.get_squad_id_by_name(input_squad_name)
+                    new_member = ui.create_member(input_member_name, input_squad_name) 
+                    member_db.add_member(new_member, squad_name_to_squad_id)
+                    print(f"New Member {input_member_name} was added to {input_squad_name}.")
+                else: 
+                    print("Member already exists.")
 
             elif sub == "3":
-                member = ui.create_power()
-                power_db.add_power(member)
+                input_power_name = ui.get_power_name()
+                if not power_db.power_exists(input_power_name):
+                    print("To which member do you want to add power?")
+                    input_member_name = ui.get_member_name()
+                    member_name_to_member_id = member_db.get_member_id_by_name(input_power_name)
+                    new_power = ui.create_power(input_power_name, input_member_name)
+                    power_db.add_power(new_power, member_name_to_member_id)
+                    print(f"New Power {input_power_name} added to {input_member_name}.")
+                else: 
+                    print("Power already exists.")
+
             elif sub == "4" or sub.lower() == "b":
                 continue
 

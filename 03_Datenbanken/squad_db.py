@@ -12,10 +12,7 @@ class SquadDB:
         )
         return self.db.fetchone() is not None
 
-    def add_squad(self, squad: Squad) -> bool:
-        if self.squad_exists(squad.squad_name):
-            return False
-
+    def add_squad(self, squad: Squad) -> None:
         self.db.execute(
             """
             INSERT INTO squads
@@ -32,7 +29,6 @@ class SquadDB:
             )
         )
         self.db.commit()
-        return True
 
     def get_squad_id_by_name(self, squad_name: str):
         self.db.execute(
@@ -41,6 +37,4 @@ class SquadDB:
         )
 
         row = self.db.fetchone()
-        if row: 
-            return row[0] 
-        return None
+        return row[0]

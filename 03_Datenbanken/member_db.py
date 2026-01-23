@@ -6,16 +6,14 @@ class MemberDB:
     def __init__(self, db: Database):
         self.db = db
 
-    def member_exists(self, name: str) -> bool:
+    def member_exists(self, member_name: str) -> bool:
         self.db.execute(
             "SELECT member_id FROM members WHERE name = ?",
-            (name,)
+            (member_name,)
         )
         return self.db.fetchone() is not None
 
-    def add_member(self, member: Member, squad_id: int) -> bool:
-        if self.member_exists(member.member_name):
-            return False
+    def add_member(self, member: Member, squad_id: int) -> None:
 
         self.db.execute(
             "INSERT INTO members (name, age, squad_id, secret_identity) VALUES (?, ?, ?, ?)",
@@ -29,7 +27,6 @@ class MemberDB:
 
         self.db.commit()
 
-        return True
 
     def get_by_squad(self, squad_id: int):
         self.db.execute(

@@ -2,7 +2,6 @@ from models import Squad, Member, Power
 
 
 class UI:
-
     def input_int(self) -> int:
         while True:
             try:
@@ -52,10 +51,7 @@ class UI:
         """)
         return input("> ")
     
-    def create_squad(self) -> Squad:
-        print("--- NEW SQUAD ---")
-        print("Write Squad Name.")
-        squad_name = input("> ").strip()
+    def create_squad(self, squad_name: str) -> Squad:
 
         print("Write Squad Home Town.")
         home_town = input("> ").strip()
@@ -82,11 +78,7 @@ class UI:
             members=[]
         )
 
-    def create_member(self) -> Member:
-        print("--- NEW MEMBER ---")
-        print("Member Name")
-        member_name = input("> ").strip()
-
+    def create_member(self, member_name: str, squad_name: str) -> Member:
         print("Write Member Age")
         age = self.input_int()
 
@@ -97,14 +89,27 @@ class UI:
             member_name=member_name,
             age=age,
             secret_identity=secret_identity,
-            powers=[]
+            powers=[],
+            squad_name=squad_name
         )
     
-    def create_power(self) -> Power:
-        print("--- NEW POWER ---")
-        print("Write power")
-        power_name = input(">").strip()
-
+    def create_power(self, power_name: str, member_name: str) -> Power:
         return Power(
-            power_name=power_name
+            power_name=power_name,
+            member_name=member_name
         )
+
+    def get_squad_name(self) -> str:
+        print("Write squad name.")
+        squad_name = input("> ").strip()
+        return squad_name
+
+    def get_member_name(self) -> str:
+        print("Write member name.")
+        member_name = input("> ").strip()
+        return member_name
+    
+    def get_power_name(self) -> str:
+        print("Write power name.")
+        power_name = input("> ").strip()
+        return power_name
