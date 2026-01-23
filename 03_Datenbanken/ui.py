@@ -41,6 +41,17 @@ class UI:
         """)
         return input("> ")
 
+    def show_menu(self) -> str:
+        print("""
+              SHOW ALL      ---> 1
+              SHOW SQUAD    ---> 2
+              SHOW MEMBERS  ---> 3
+              BACK          ---> 4 or b
+              EXIT          ---> 5 or x
+              """)
+        return input("> ")
+
+    #region ADD
     def add_menu(self) -> str:
         print("""
         ADD SQUAD   ---> 1
@@ -98,7 +109,9 @@ class UI:
             power_name=power_name,
             member_name=member_name
         )
-
+    #endregion 
+    
+    
     def get_squad_name(self) -> str:
         print("Write squad name.")
         squad_name = input("> ").strip()

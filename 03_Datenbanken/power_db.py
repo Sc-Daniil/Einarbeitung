@@ -6,16 +6,16 @@ class PowerDB:
     def __init__(self, db: Database):
         self.db = db
 
-    def power_exists(self, power_name: str) -> bool:
+    def power_exists_in_member(self, power_name: str, member_id: int) -> bool:
         self.db.execute(
-            "SELECT 1 FROM powers WHERE power = ?",
-            (power_name,)
+            "SELECT member_id FROM powers WHERE power = ? AND member_id = ?",
+            (power_name, member_id)
         )
         return self.db.fetchone() is not None
 
 
     def add_power(self, power: Power, member_id: int) -> None:
-        if self.power_exists(power.power_name):
+        if self.power_exists_in_member(power.power_name, member_id):
             return False
         self.db.execute(
             "INSERT INTO powers (power, member_id) VALUES (?, ?)",
@@ -33,3 +33,9 @@ class PowerDB:
             (member_id,)
         )
         return self.db.fetchall()
+
+    def show_powers(self):
+        self.db.execute(
+            "SELECT * FROM powers"
+        )
+        return self.db.fetchall() is not None

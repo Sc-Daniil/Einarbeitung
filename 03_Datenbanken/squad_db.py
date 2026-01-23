@@ -38,3 +38,10 @@ class SquadDB:
 
         row = self.db.fetchone()
         return row[0]
+    
+    def show_squad(self):
+        self.db.execute(
+            "SELECT * FROM squads"
+        )
+
+        return self.db.fetchall() is not None

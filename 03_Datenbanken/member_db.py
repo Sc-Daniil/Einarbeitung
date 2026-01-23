@@ -1,7 +1,6 @@
 from database import Database
 from models import Member
 
-
 class MemberDB:
     def __init__(self, db: Database):
         self.db = db
@@ -41,7 +40,12 @@ class MemberDB:
             (member_name,)
         )
 
-        row = self.db.fetchone()
-        if row:
-            return row[0]
-        return None
+        return self.db.fetchone() is not None
+
+
+    def show_members(self):
+        self.db.execute(
+            "SELECT * FROM members"
+        )
+        
+        return self.db.fetchall() is not None

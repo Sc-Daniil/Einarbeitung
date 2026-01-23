@@ -60,7 +60,7 @@ def main():
             if sub == "1":
                 squad_name = ui.get_squad_name()
                 if not squad_db.squad_exists(squad_name):
-                    squad = ui.create_squad(squad_name)
+                    squad = ui.asdas(squad_name)
                     squad_db.add_squad(squad)
                     print(f"New Squad {squad_name} was added.")
                 else:
@@ -80,15 +80,16 @@ def main():
 
             elif sub == "3":
                 input_power_name = ui.get_power_name()
-                if not power_db.power_exists(input_power_name):
-                    print("To which member do you want to add power?")
-                    input_member_name = ui.get_member_name()
+                print("To which member do you want to add power?")
+                input_member_name = ui.get_member_name()
+                if not power_db.power_exists_in_member(input_power_name, input_member_name):
                     member_name_to_member_id = member_db.get_member_id_by_name(input_power_name)
+                    print(member_name_to_member_id)
                     new_power = ui.create_power(input_power_name, input_member_name)
                     power_db.add_power(new_power, member_name_to_member_id)
                     print(f"New Power {input_power_name} added to {input_member_name}.")
                 else: 
-                    print("Power already exists.")
+                    print(f"Power {input_power_name} already exists in member {input_member_name}")
 
             elif sub == "4" or sub.lower() == "b":
                 continue
