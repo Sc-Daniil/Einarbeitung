@@ -27,7 +27,7 @@ class MemberDB:
         self.db.commit()
 
 
-    def get_by_squad(self, squad_id: int):
+    def get_member_by_squad(self, squad_id: int):
         self.db.execute(
             "SELECT * FROM members WHERE squad_id = ?",
             (squad_id,)
@@ -39,13 +39,22 @@ class MemberDB:
             "SELECT member_id FROM members WHERE name = ?",
             (member_name,)
         )
+        row = self.db.fetchone()
+        return row[0] 
 
-        return self.db.fetchone() is not None
 
-
-    def show_members(self):
+    def get_all_member_names_in_squad(self, squad_id: int):
         self.db.execute(
-            "SELECT * FROM members"
+            "SELECT name FROM members WHERE squad_id = ?",
+            (squad_id,)
         )
         
-        return self.db.fetchall() is not None
+        return self.db.fetchall()
+
+    def get_all_members_by_squad(self, squad_id: int):
+        self.db.execute(
+            "SELECT * FROM members WHERE squad_id = ?",
+            (squad_id,)
+        )
+
+        return self.db.fetchall()

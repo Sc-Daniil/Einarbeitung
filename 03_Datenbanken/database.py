@@ -6,7 +6,7 @@ class Database:
         self.connection = sqlite3.connect(self.db_name)
         self.cur = self.connection.cursor()
 
-    def make_tables(self):
+    def try_make_tables(self):
         self.cur.execute("""
             CREATE TABLE IF NOT EXISTS powers (
                     power_id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -40,6 +40,7 @@ class Database:
         """)
 
         self.connection.commit() 
+
     def execute(self, sql: str, params: tuple = ()):
         self.cur.execute(sql, params)
 

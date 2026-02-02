@@ -39,9 +39,16 @@ class SquadDB:
         row = self.db.fetchone()
         return row[0]
     
-    def show_squad(self):
+    def get_all_squads_names(self):
+        self.db.execute(
+            "SELECT squad_name FROM squads"
+        )
+
+        return self.db.fetchall()
+    
+    def get_all_squads_info(self):
         self.db.execute(
             "SELECT * FROM squads"
         )
 
-        return self.db.fetchall() is not None
+        return self.db.fetchall()
