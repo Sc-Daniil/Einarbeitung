@@ -5,24 +5,25 @@ class Database:
         self.db_name = db_name
         self.connection = sqlite3.connect(self.db_name)
         self.cur = self.connection.cursor()
+        self._enable_foreign_keys()
 
     def try_make_tables(self):
         self.cur.execute("""
             CREATE TABLE IF NOT EXISTS powers (
                     power_id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    power TEXT,
+                    power_name TEXT,
                     member_id INTEGER,
-                    FOREIGN KEY(member_id) REFERENCES members(member_id)) 
+                    FOREIGN KEY(member_id) REFERENCES members(member_id) ON DELETE CASCADE) 
         """)
 
         self.cur.execute("""
             CREATE TABLE IF NOT EXISTS members (
                 member_id INTEGER PRIMARY KEY AUTOINCREMENT,
-                name TEXT,
-                age INTEGER,
+                member_name TEXT,
+                member_age INTEGER,
                 squad_id INTEGER,
                 secret_identity TEXT,
-                FOREIGN KEY(squad_id) REFERENCES squads(squad_id)   
+                FOREIGN KEY(squad_id) REFERENCES squads(squad_id) ON DELETE CASCADE
                 
             )
         """)
@@ -40,6 +41,9 @@ class Database:
         """)
 
         self.connection.commit() 
+
+    def _enable_foreign_keys(self) -> None:
+        self.cur.execute("PRAGMA foreign_keys = ON")
 
     def execute(self, sql: str, params: tuple = ()):
         self.cur.execute(sql, params)

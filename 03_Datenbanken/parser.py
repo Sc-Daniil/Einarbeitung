@@ -12,7 +12,7 @@ class Parser:
             for m in s["members"]:         
                 member = Member(
                     member_name=m["name"],
-                    age=m["age"],
+                    member_age=m["age"],
                     secret_identity=m["secretIdentity"],
                     powers=m["powers"],
                     squad_name=s["squadName"]
@@ -40,7 +40,7 @@ class Parser:
             for m in s["members"]:
                 member = Member(
                     member_name=m["name"],
-                    age=m["age"],
+                    member_age=m["age"],
                     secret_identity=m["secretIdentity"],
                     powers=m["powers"],
                     squad_name=s["squadName"]

@@ -8,7 +8,7 @@ class Power:
 @dataclass
 class Member:
     member_name: str
-    age: int
+    member_age: int
     secret_identity: str
     powers: list[str]
     squad_name: str

@@ -5,37 +5,88 @@ from models import Power
 class PowerDB:
     def __init__(self, db: Database):
         self.db = db
+
     def power_exists(self, power_name: str) -> bool: 
         self.db.execute(
-            "SELECT power_id FROM powers WHERE power = ?", 
+            "SELECT 1 FROM powers WHERE power_name = ? LIMIT 1", 
             (power_name,)
         )
-        return self.db.fetchone() is not None
+        
+        row = self.db.fetchone()
+        if row is None:
+            return None
+        return row
 
     def power_exists_in_member(self, power_name: str, member_id: int) -> bool:
         self.db.execute(
-            "SELECT member_id FROM powers WHERE power = ? AND member_id = ?",
+            "SELECT member_id FROM powers WHERE power_name = ? AND member_id = ?",
             (power_name, member_id)
         )
-        return self.db.fetchone() is not None
+
+        row = self.db.fetchone()
+        if row is None:
+            return None
+        return row
 
 
-    def add_power(self, power: Power, member_id: int) -> None:
-        if self.power_exists_in_member(power.power_name, member_id):
+    def add_power(self, power_name: Power, member_id: int) -> None:
+        if self.power_exists_in_member(power_name.power_name, member_id):
             return False
+
         self.db.execute(
-            "INSERT INTO powers (power, member_id) VALUES (?, ?)",
+            "INSERT INTO powers (power_name, member_id) VALUES (?, ?)",
             (
-                power.power_name,
+                power_name.power_name,
                 member_id
             )
         )
 
         self.db.commit()
 
-    def get_all_powers_by_member(self, member_id: int):
+    def get_power_id_by_name_in_member(self, power_name: str, member_id: int):
         self.db.execute(
-            "SELECT power FROM powers WHERE member_id = ?",
+            "SELECT power_name FROM powers WHERE power_name = ? AND member_id = ?",
+            (power_name, member_id,)
+        )
+
+        row = self.db.fetchone()
+        if row is None:
+            return None
+        return row
+
+    def get_power_id_by_member_id(self, member_id: int):
+        self.db.execute(
+            "SELECT power_id FROM powers WHERE member_id = ?",
             (member_id,)
         )
         return self.db.fetchall()
+
+    def get_power_id_by_name(self, power_name: str):
+        self.db.execute(
+            "SELECT power_id FROM powers WHERE power = ?",
+            (power_name,)
+        )
+
+        row = self.db.fetchone()
+        if row is None:
+            return None
+        return row
+
+    def get_all_powers_by_member(self, member_id: int) -> list:
+        self.db.execute(
+            "SELECT power_name FROM powers WHERE member_id = ?",
+            (member_id,)
+        )
+        rows = self.db.fetchall()
+        if not rows:
+            return []
+        return rows
+
+
+    def remove_power(self, power_id: int) -> None:
+        self.db.execute(
+            "DELETE FROM powers WHERE power_id = ?", 
+            (power_id,)
+        )
+
+        self.db.commit()

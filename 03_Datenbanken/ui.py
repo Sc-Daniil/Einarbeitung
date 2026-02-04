@@ -51,6 +51,11 @@ class UI:
               """)
         return input("> ")
 
+    def overwrite_menu(self) -> str:
+        print("")
+
+        return input("> ")
+
     #region ADD
     def add_menu(self) -> str:
         print("""
@@ -145,24 +150,21 @@ class UI:
             print(power[0])
         print(f"Count Powers: {len(powers)}")
         
-    def show_all_squads(self, squads: list) -> None:
-        for squad in squads:
-            print(f"""Squad Name:  {squad[1]}
-Home Town:   {squad[2]}
-Formed:      {squad[3]}
-Status:      {squad[4]}
-Secret Base: {squad[5]}
-Active:      {bool(squad[6])}
+    def show_all_squads(self, squad: tuple) -> None:
+        print("-- Squad --")
+        print(f"""Squad Name:    {squad[1]}
+Home Town:     {squad[2]}
+Formed:        {squad[3]}
+Status:        {squad[4]}
+Secret Base:   {squad[5]}
+Active:        {bool(squad[6])}
 """)
-    def show_all_members(self, members: list) -> None: 
-        for member in members:
-            print(f"""    Member Name:    {member[1]}
+
+    def show_all_members(self, member: tuple) -> None: 
+        print(f"""    Member Name:    {member[1]}
     Age:            {member[2]}
-    Secret Id:      {member[3]}
+    Secret Id:      {member[4]}
     """)
 
-    def show_all_powers(self, powers: list) -> None:
-        for power in powers:
-            print(f"""
-        Power: {power[1]}
-    """)
+    def show_all_powers(self, power: tuple) -> None:
+        print(f"       Power: {power[0]} \n")

@@ -5,10 +5,10 @@ class SquadDB:
     def __init__(self, db: Database):
         self.db = db
 
-    def squad_exists(self, name: str) -> bool:
+    def squad_exists(self, squad_name: str) -> bool:
         self.db.execute(
-            "SELECT squad_id FROM squads WHERE squad_name = ?",
-            (name,)
+            "SELECT 1 FROM squads WHERE squad_name = ? LIMIT 1",
+            (squad_name,)
         )
         return self.db.fetchone() is not None
 
@@ -37,18 +37,39 @@ class SquadDB:
         )
 
         row = self.db.fetchone()
-        return row[0]
+        if row is None:
+            return None
+
+        return row
     
     def get_all_squads_names(self):
         self.db.execute(
             "SELECT squad_name FROM squads"
         )
 
-        return self.db.fetchall()
+        rows = self.db.fetchall()
+
+        if not rows:
+            return []
+
+        return rows
     
     def get_all_squads_info(self):
         self.db.execute(
             "SELECT * FROM squads"
         )
 
-        return self.db.fetchall()
+        rows = self.db.fetchall()
+
+        if not rows:
+            return []
+
+        return rows
+
+    def remove_squad(self, squad_id: int) -> None:
+        self.db.execute(
+            "DELETE FROM squads WHERE squad_id = ?", 
+            (squad_id,)
+        )
+
+        self.db.commit()
