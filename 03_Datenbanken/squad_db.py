@@ -28,6 +28,7 @@ class SquadDB:
                 squad.active
             )
         )
+
         self.db.commit()
 
     def get_squad_id_by_name(self, squad_name: str):
@@ -40,7 +41,7 @@ class SquadDB:
         if row is None:
             return None
 
-        return row
+        return row[0]
     
     def get_all_squads_names(self):
         self.db.execute(

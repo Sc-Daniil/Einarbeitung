@@ -16,7 +16,7 @@ class MemberDB:
         if row is None:
             return None
 
-        return row
+        return row[0]
 
     def member_exists_in_squad(self, member_name, squad_id):
         self.db.execute(
@@ -29,7 +29,7 @@ class MemberDB:
         if row is None:
             return None
 
-        return row 
+        return row[0]
 
     def add_member(self, member: Member, squad_id: int) -> None:
         self.db.execute(
@@ -76,7 +76,7 @@ class MemberDB:
         if row is None:
             return None
 
-        return row 
+        return row[0]
 
 
     def get_member_id_by_member_name_in_squad(self, member_name: str, squad_id: int):
@@ -90,7 +90,7 @@ class MemberDB:
         if row is None:
             return None
 
-        return row
+        return row[0]
 
     def get_all_member_names_in_squad(self, squad_id: int):
         self.db.execute(
@@ -102,7 +102,7 @@ class MemberDB:
         if not rows:
             return []
 
-        return self.db.fetchall()
+        return rows
 
     def get_all_members_by_squad(self, squad_id: int):
         self.db.execute(

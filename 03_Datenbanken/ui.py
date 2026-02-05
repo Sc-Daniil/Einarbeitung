@@ -4,7 +4,7 @@ class UI:
     def input_int(self) -> int:
         while True:
             try:
-                return int(input("> "))
+                return int(input("> ").strip())
             except ValueError:
                 print("Wrong. Write a number.")
 
@@ -24,11 +24,12 @@ class UI:
 
         SHOW INFO      ---> 1
         ADD DATA       ---> 2
-        OVERWRITE DATA ---> 3
+        UPDATE DATA    ---> 3
         REMOVE DATA    ---> 4
         LEAVE PROGRAMM ---> 5 or x
         """)
-        return input("> ")
+
+        return input("> ").strip().lower()
 
     def show_menu(self) -> str:
         print("""
@@ -39,22 +40,30 @@ class UI:
         BACK          ---> 5 or b
         EXIT          ---> 6 or x
         """)
-        return input("> ")
+
+        return input("> ").strip()
 
     def remove_menu(self) -> str:
         print("""
-              REMOVE SQUAD  ---> 1
-              REMOVE MEMBER ---> 2
-              REMOVE POWER  ---> 3
-              BACK          ---> 4 or b
-              EXIT          ---> 5 or x
-              """)
-        return input("> ")
+        REMOVE SQUAD  ---> 1
+        REMOVE MEMBER ---> 2
+        REMOVE POWER  ---> 3
+        BACK          ---> 4 or b
+        EXIT          ---> 5 or x
+        """)
+        return input("> ").strip()
 
-    def overwrite_menu(self) -> str:
-        print("")
+    def update_menu(self) -> str:
+        print("""
+        UPDATE SQUAD    ---> 1
+        UPDATE MEMBER   ---> 2
+        UPDATE POWER    ---> 3
+        BACK            ---> 4 or b
+        EXIT            ---> 5 or x
 
-        return input("> ")
+        """)
+
+        return input("> ").strip()
 
     #region ADD
     def add_menu(self) -> str:
@@ -65,7 +74,7 @@ class UI:
         BACK        ---> 4 or b
         EXIT        ---> 5 or x
         """)
-        return input("> ")
+        return input("> ").strip()
     
     def create_squad(self, squad_name: str) -> Squad:
 
@@ -114,23 +123,19 @@ class UI:
             power_name=power_name,
             member_name=member_name
         )
-    #endregion 
     
     
     def get_squad_name(self) -> str:
         print("Write squad name.")
-        squad_name = input("> ").strip()
-        return squad_name
+        return input("> ").strip()
 
     def get_member_name(self) -> str:
         print("Write member name.")
-        member_name = input("> ").strip()
-        return member_name
+        return input("> ").strip()
     
     def get_power_name(self) -> str:
         print("Write power name.")
-        power_name = input("> ").strip()
-        return power_name
+        return input("> ").strip()
     
     def show_squads_names(self, squads: list) -> None:
         print("--- ALL SQUAD ---")
@@ -168,3 +173,29 @@ Active:        {bool(squad[6])}
 
     def show_all_powers(self, power: tuple) -> None:
         print(f"       Power: {power[0]} \n")
+
+    def update_squad_options(self) -> str:
+        print("""
+        UPDATE SQUAD NAME            ---> 1
+        UPDATE SQUAD HOME TOWN       ---> 2
+        UPDATE SQUAD FORMED YEAR     ---> 3
+        UPDATE SQUAD STATUS          ---> 4
+        UPDATE SQUAD SECRET BASE     ---> 5
+        UPDATE SQUAD ACTIVE STATE    ---> 6
+        BACK                         ---> 7 or b
+        EXIT                         ---> 8 or x
+        """)
+
+        return input("> ").strip()
+    
+    def update_member_options(self) -> str:
+        print("""
+        UPDATE MEMBER NAME        ---> 1
+        UPDATE MEMBER AGE         ---> 2
+        UPDATE MEMBER SECRET ID   ---> 3
+        BACK                      ---> 4 or b
+        EXIT                      ---> 5 or x
+        """)
+
+        return input("> ").strip()
+    

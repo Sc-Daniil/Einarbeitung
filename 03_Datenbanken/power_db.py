@@ -15,7 +15,8 @@ class PowerDB:
         row = self.db.fetchone()
         if row is None:
             return None
-        return row
+
+        return row[0]
 
     def power_exists_in_member(self, power_name: str, member_id: int) -> bool:
         self.db.execute(
@@ -26,7 +27,8 @@ class PowerDB:
         row = self.db.fetchone()
         if row is None:
             return None
-        return row
+
+        return row[0]
 
 
     def add_power(self, power_name: Power, member_id: int) -> None:
@@ -52,7 +54,8 @@ class PowerDB:
         row = self.db.fetchone()
         if row is None:
             return None
-        return row
+
+        return row[0]
 
     def get_power_id_by_member_id(self, member_id: int):
         self.db.execute(
@@ -70,7 +73,8 @@ class PowerDB:
         row = self.db.fetchone()
         if row is None:
             return None
-        return row
+
+        return row[0]
 
     def get_all_powers_by_member(self, member_id: int) -> list:
         self.db.execute(
