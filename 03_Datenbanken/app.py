@@ -55,7 +55,7 @@ class App:
             
             if handler is None:
                 print("\nIncorrect number.\n")
-                return Action.BACK 
+                continue
 
             action = handler() 
             
@@ -120,7 +120,6 @@ class App:
             return Action.STAY
         return action
             
-
     
     def show_all(self) -> Action:
         squads_info = self.squad_db.get_all_squads_info()
@@ -150,7 +149,8 @@ class App:
         
         if not self.squad_db.squad_exists(input_squad_name):
             print("Incorrect squad name.")
-
+            return Action.STAY
+            
         squad_id = self.squad_db.get_squad_id_by_name(input_squad_name)
         members_names = self.member_db.get_all_member_names_in_squad(squad_id)
 
@@ -204,7 +204,7 @@ class App:
         self.member_db.add_member(new_member, squad_name_to_squad_id)
         print(f"\nNew Member {input_member_name} was added to {input_squad_name}.\n")
 
-        return Action.EXIT
+        return Action.STAY
 
     def add_power(self) -> Action:
         print("\nTo which member do you want to add power?\n")
@@ -222,24 +222,77 @@ class App:
             print(f"\nPower {input_power_name} already exists in member {input_member_name}\n")
             return Action.STAY
 
-        member_name_to_member_id = self.member_db.get_member_id_by_name(input_member_name)
-        new_power = self.ui.create_power(input_power_name, input_member_name)
+        new_power = self.ui.create_power(input_power_name, member_id)
 
-        self.power_db.add_power(new_power, member_name_to_member_id)
+        self.power_db.add_power(new_power, member_id)
         print(f"\nNew Power {input_power_name} added to {input_member_name}.\n")
 
         return Action.STAY
 
-    def update_squad(self):
+
+
+    def update_squad(self) -> Action:
+        handlers = {
+            "1": self.update_squad_name,
+            "2": self.update_squad_home_town,
+            "3": self.update_squad_formed,
+            "4": self.update_squad_status,
+            "5": self.update_squad_secret_base,
+            "6": self.update_squad_active
+        } 
+
+        action = self._run_submemu(self.ui.update_squad_options, handlers)
+
+        if action == Action.BACK:
+            return Action.STAY
+
+        return action
+
+    def update_member(self) -> Action:
+        handlers = {
+            "1": self.update_member_name,
+            "2": self.update_member_age,
+            "3": self.update_member_secret_id
+        }
+        
+        action = self._run_submemu(self.ui.update_member_options, handlers)
+
+        if action == Action.BACK:
+            return Action.STAY
+
+        return action    
+
+    def update_power(self) -> Action:
+
+        print("\nPower updated.\n")
+        return Action.STAY
+    
+    def update_squad_name(self):
+        ...
+
+    def update_squad_home_town(self):
         ...
     
-    def update_member(self):
+    def update_squad_formed(self):
         ...
     
-    def update_power(self):
+    def update_squad_status(self):
+        ...
+
+    def update_squad_secret_base(self):
+        ...
+
+    def update_squad_active(self):
         ...
     
-    
+    def update_member_name(self):
+        ...
+
+    def update_member_age(self):
+        ...
+
+    def update_member_secret_id(self):
+        ...
 
     def remove_squad(self) -> Action:
         squads = self.squad_db.get_all_squads_names()

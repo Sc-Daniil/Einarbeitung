@@ -37,8 +37,8 @@ class UI:
         SHOW SQUAD    ---> 2
         SHOW MEMBERS  ---> 3
         SHOW POWERS   ---> 4
-        BACK          ---> 5 or b
-        EXIT          ---> 6 or x
+        BACK          ---> b
+        EXIT          ---> x
         """)
 
         return input("> ").strip()
@@ -48,8 +48,8 @@ class UI:
         REMOVE SQUAD  ---> 1
         REMOVE MEMBER ---> 2
         REMOVE POWER  ---> 3
-        BACK          ---> 4 or b
-        EXIT          ---> 5 or x
+        BACK          ---> b
+        EXIT          ---> x
         """)
         return input("> ").strip()
 
@@ -58,8 +58,8 @@ class UI:
         UPDATE SQUAD    ---> 1
         UPDATE MEMBER   ---> 2
         UPDATE POWER    ---> 3
-        BACK            ---> 4 or b
-        EXIT            ---> 5 or x
+        BACK            ---> b
+        EXIT            ---> x
 
         """)
 
@@ -71,8 +71,8 @@ class UI:
         ADD SQUAD   ---> 1
         ADD MEMBER  ---> 2
         ADD POWER   ---> 3
-        BACK        ---> 4 or b
-        EXIT        ---> 5 or x
+        BACK        ---> b
+        EXIT        ---> x
         """)
         return input("> ").strip()
     
@@ -182,8 +182,8 @@ Active:        {bool(squad[6])}
         UPDATE SQUAD STATUS          ---> 4
         UPDATE SQUAD SECRET BASE     ---> 5
         UPDATE SQUAD ACTIVE STATE    ---> 6
-        BACK                         ---> 7 or b
-        EXIT                         ---> 8 or x
+        BACK                         ---> b
+        EXIT                         ---> x
         """)
 
         return input("> ").strip()
@@ -193,8 +193,8 @@ Active:        {bool(squad[6])}
         UPDATE MEMBER NAME        ---> 1
         UPDATE MEMBER AGE         ---> 2
         UPDATE MEMBER SECRET ID   ---> 3
-        BACK                      ---> 4 or b
-        EXIT                      ---> 5 or x
+        BACK                      ---> b
+        EXIT                      ---> x
         """)
 
         return input("> ").strip()
