@@ -2,6 +2,8 @@ from models import Squad
 from database import Database
 
 class SquadDB:
+    ALLOWED_COLUMNS = {"squad_id", "squad_name", "home_town", "formed", "status", "secret_base", "active"}
+
     def __init__(self, db: Database):
         self.db = db
 
@@ -71,6 +73,17 @@ class SquadDB:
         self.db.execute(
             "DELETE FROM squads WHERE squad_id = ?", 
             (squad_id,)
+        )
+
+        self.db.commit()
+
+    def update_squad_value(self, new_value, column: str, squad_id: int) -> None:
+        if column not in self.ALLOWED_COLUMNS:
+            raise ValueError("Invalid column name in squad_db.py")
+
+        self.db.execute(
+            f"UPDATE squads SET {column} = ? WHERE squad_id = ?",
+            (new_value, squad_id,)
         )
 
         self.db.commit()

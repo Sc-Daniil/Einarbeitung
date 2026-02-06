@@ -66,7 +66,7 @@ class PowerDB:
 
     def get_power_id_by_name(self, power_name: str):
         self.db.execute(
-            "SELECT power_id FROM powers WHERE power = ?",
+            "SELECT power_id FROM powers WHERE power_name = ?",
             (power_name,)
         )
 
@@ -94,3 +94,12 @@ class PowerDB:
         )
 
         self.db.commit()
+
+    def update_power_name(self, new_power_name, power_id: int) -> None:
+        self.db.execute(
+            "UPDATE powers SET power_name = ? WHERE power_id = ?",
+            (new_power_name, power_id,)
+        )
+        
+        self.db.commit()
+

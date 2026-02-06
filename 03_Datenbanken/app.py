@@ -48,7 +48,7 @@ class App:
             if output in ["b", "back"]:
                 return Action.BACK
 
-            if output in ["e", "exit"]:
+            if output in ["e", "exit", "x"]:
                 return Action.EXIT
             
             handler = handlers.get(output)
@@ -232,68 +232,128 @@ class App:
 
 
     def update_squad(self) -> Action:
-        handlers = {
-            "1": self.update_squad_name,
-            "2": self.update_squad_home_town,
-            "3": self.update_squad_formed,
-            "4": self.update_squad_status,
-            "5": self.update_squad_secret_base,
-            "6": self.update_squad_active
+        columns = {
+            "1": "squad_name",
+            "2": "home_town",
+            "3": "formed",
+            "4": "status",
+            "5": "secret_base",
+            "6": "active"
         } 
 
-        action = self._run_submemu(self.ui.update_squad_options, handlers)
+        while True:
+            output = self.ui.update_squad_options()
 
-        if action == Action.BACK:
+            if output in ["b", "back"]:
+                return Action.BACK
+
+            if output in ["e", "exit", "x"]:
+                return Action.EXIT
+            
+            column = columns.get(output)
+
+            if column is None:
+                print("\nIncorrect number.\n")
+                continue
+            
+            squads = self.squad_db.get_all_squads_names()
+            self.ui.show_squads_names(squads)
+
+            print("\nWrite squad name which you want to update")
+            input_squad_name = self.ui.get_squad_name()
+
+            if not self.squad_db.squad_exists(input_squad_name):
+                print("\nIncorrect squad name.\n")
+                return Action.STAY
+            
+            squad_id = self.squad_db.get_squad_id_by_name(input_squad_name)
+
+            print("\nWrite new value.\n")
+            input_new_value = input("> ").strip()
+
+            self.squad_db.update_squad_value(input_new_value, column, squad_id)
+
+            print("\nSquad updated.\n")
             return Action.STAY
 
-        return action
+
 
     def update_member(self) -> Action:
-        handlers = {
-            "1": self.update_member_name,
-            "2": self.update_member_age,
-            "3": self.update_member_secret_id
+        columns = {
+            "1": "member_name",
+            "2": "member_age",
+            "3": "secret_identity"
         }
         
-        action = self._run_submemu(self.ui.update_member_options, handlers)
+        while True:
+            output = self.ui.update_member_options()
 
-        if action == Action.BACK:
+            if output in ["b", "back"]:
+                return Action.BACK
+
+            if output in ["e", "exit", "x"]:
+                return Action.EXIT
+            
+            column = columns.get(output)
+
+            if column is None:
+                print("\nIncorrect number.\n")
+                continue
+
+            members = self.member_db.get_all_members_names()
+            self.ui.show_members_names(members)
+
+            print("\nWrite member name which you want to update.")
+            input_member_name = self.ui.get_member_name()
+
+            if not self.member_db.member_exists(input_member_name):
+                print("\nIncorrect member name.\n")
+                return Action.STAY
+
+            member_id = self.member_db.get_member_id_by_name(input_member_name)
+
+            print("\nWrite new value.\n")
+            member_new_value = input("> ").strip()
+
+            self.member_db.update_member_value(member_new_value, column, member_id)
+            
+            print("\nMember updated.\n")
             return Action.STAY
 
-        return action    
-
     def update_power(self) -> Action:
+        members = self.member_db.get_all_members_names()
+        self.ui.show_members_names(members)
+
+        print("\nWrite member name, where you want to update power")
+        input_member_name = self.ui.get_member_name()
+
+        if not self.member_db.member_exists(input_member_name):
+            print("\nIncorrect member name.\n")
+            return Action.STAY
+        
+        member_id = self.member_db.get_member_id_by_name(input_member_name)
+        powers = self.power_db.get_all_powers_by_member(member_id)
+
+        self.ui.show_all_powers(powers)
+
+        print("\nWrite power name, which you want to update.")
+        input_power_name = self.ui.get_power_name()
+
+        if not self.power_db.power_exists(input_power_name):
+            print("\nIncorrect power name.\n")
+            return Action.STAY
+        
+        power_id = self.power_db.get_power_id_by_name(input_power_name)
+
+        print("\nWrite new power name.\n")
+        input_new_power_name = self.ui.get_power_name()
+
+        self.power_db.update_power_name(input_new_power_name, power_id)
 
         print("\nPower updated.\n")
         return Action.STAY
+
     
-    def update_squad_name(self):
-        ...
-
-    def update_squad_home_town(self):
-        ...
-    
-    def update_squad_formed(self):
-        ...
-    
-    def update_squad_status(self):
-        ...
-
-    def update_squad_secret_base(self):
-        ...
-
-    def update_squad_active(self):
-        ...
-    
-    def update_member_name(self):
-        ...
-
-    def update_member_age(self):
-        ...
-
-    def update_member_secret_id(self):
-        ...
-
     def remove_squad(self) -> Action:
         squads = self.squad_db.get_all_squads_names()
         self.ui.show_squads_names(squads)

@@ -171,8 +171,9 @@ Active:        {bool(squad[6])}
     Secret Id:      {member[4]}
     """)
 
-    def show_all_powers(self, power: tuple) -> None:
-        print(f"       Power: {power[0]} \n")
+    def show_all_powers(self, powers: list) -> None:
+        for power in powers:
+            print(f"       Power: {power} \n")
 
     def update_squad_options(self) -> str:
         print("""
@@ -186,7 +187,7 @@ Active:        {bool(squad[6])}
         EXIT                         ---> x
         """)
 
-        return input("> ").strip()
+        return input("> ").strip().lower()
     
     def update_member_options(self) -> str:
         print("""
@@ -197,5 +198,5 @@ Active:        {bool(squad[6])}
         EXIT                      ---> x
         """)
 
-        return input("> ").strip()
+        return input("> ").strip().lower()
     

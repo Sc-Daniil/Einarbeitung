@@ -2,6 +2,8 @@ from database import Database
 from models import Member
 
 class MemberDB:
+    ALLOWED_COLUMNS = {"member_id", "member_name", "member_age", "squad_id", "secret_identity"}
+
     def __init__(self, db: Database):
         self.db = db
 
@@ -92,6 +94,16 @@ class MemberDB:
 
         return row[0]
 
+    def get_all_members_names(self):
+        self.db.execute(
+            "SELECT member_name FROM members"
+            )
+        rows = self.db.fetchall()
+        if not rows:
+            return []
+        
+        return rows
+
     def get_all_member_names_in_squad(self, squad_id: int):
         self.db.execute(
             "SELECT member_name FROM members WHERE squad_id = ?",
@@ -115,3 +127,11 @@ class MemberDB:
             return []
 
         return rows
+
+    def update_member_value(self, new_value, column, member_id):
+        self.db.execute(
+            f"UPDATE members SET {column} = ? WHERE member_id = ?",
+            (new_value, member_id,)
+        )
+
+        self.db.commit()
