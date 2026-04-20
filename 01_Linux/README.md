@@ -63,7 +63,7 @@ LSP - Kommunikation
 
 - Wie kann man Programme im Hintergrund laufen lassen und Prozesse verwalten?
 Mit den Softwaretools wie Task-Manager auf Windows.
-`top`
+Linux - `top`
 
 - Wie kann man Skripte unter Linux erstellen und ausführen?
 Datei erstellen --> 'touch'
@@ -107,23 +107,25 @@ verschiebt/benennt Dateien
 
 ll - zeigt aktuelle Dateien als liste 
 ls -l
-
+ll | grep test zeigt nur die Dateien mit dem Name "test" 
 
 
 - `find . -name cisco`
-sucht Datei in gleicher Ordner 
+sucht die Datei im aktuellen Verzeichnis und in allen Unterverzeichnissen
 
 - `find / -name cisco`
-sucht Datei in allen Plätzen 
+sucht die Datei ab Root in allen Unterverzeichnissen 
 
 - `tar -xvf archive.tar.gz`
-
+macht Tare Archiver 
 
 - `df -h`
-
+df - zeigt die Belegung aller Dateisysteme
+df -h gleiche aber zeigt in Einheiten wie KB, MB, GB
 
 - `du -sh directory`
-
+du - zeigt die Belegung von aktuellem Raum 
+du -sh gleich aber in Einheit  
 
 - `ps aux`
 ps - report a snapshot of the current processes.
@@ -131,6 +133,7 @@ ps aux - zeigt jede Prozesse im System
 
 
 - `grep pattern file`
+Sucht "pattern" in den Dateien durch. Schreibt im Terminal Sätze, wo "pattern" steht
 
 
 - `top`
@@ -141,7 +144,9 @@ zeigt alle aktive Prozesse
 - `netstat -tuln`
 
 - `ifconfig`
+interface config - zeigt Netzwerkschnittstellen  
+
 
 - `ping host`
-
+prüft, ob ein Gerät erreichbar ist (im Netzwerk)  
 
